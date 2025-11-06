@@ -27,20 +27,28 @@ struct Dataset {
 void split_string(const std::string& line, char delim, double* features, int& label, int num_features) {
     int idx = 0;
     std::string temp = "";
+    int total_cols = 0;
     
     for (size_t i = 0; i < line.length(); i++) {
         if (line[i] == delim) {
             if (idx < num_features) {
                 features[idx] = std::stod(temp);
+            } else if (idx == num_features) {
+                // This is the label column
+                label = std::stoi(temp);
             }
+            // Ignore any additional columns beyond num_features + 1
             temp = "";
             idx++;
+            total_cols++;
         } else {
             temp += line[i];
         }
     }
-    // Last value is the label
-    label = std::stoi(temp);
+    // Last value is the label (or ignored if there are extra columns)
+    if (idx == num_features) {
+        label = std::stoi(temp);
+    }
 }
 
 // ============================================================================
