@@ -27,7 +27,8 @@ intro-AI-knn-from-scratch/
 ├── python/
 │   └── knn.py           # Python implementation
 ├── data/
-│   └── iris.csv         # Sample Iris dataset
+│   ├── iris.csv         # Sample Iris dataset (30 samples)
+│   └── air_quality.csv  # Air quality dataset (5001 samples)
 └── README.md            # This file
 ```
 
@@ -73,7 +74,9 @@ cd python
 python3 knn.py
 ```
 
-## 📊 Sample Dataset
+## 📊 Sample Datasets
+
+### Iris Dataset (`iris.csv`)
 
 The included `iris.csv` contains a subset of the classic Iris dataset:
 - **Features:** 4 numeric values (sepal length, sepal width, petal length, petal width)
@@ -86,6 +89,25 @@ feature1,feature2,feature3,feature4,label
 5.1,3.5,1.4,0.2,0
 ...
 ```
+
+### Air Quality Dataset (`air_quality.csv`)
+
+The included `air_quality.csv` contains air quality measurements with environmental factors:
+- **Features:** 9 numeric values (Temperature, Humidity, PM2.5, PM10, NO2, SO2, CO, Proximity_to_Industrial_Areas, Population_Density)
+- **Labels:** Air Quality categories (Good, Moderate, Poor, Hazardous)
+- **Size:** 5001 samples
+
+Format:
+```
+Temperature,Humidity,PM2.5,PM10,NO2,SO2,CO,Proximity_to_Industrial_Areas,Population_Density,Air Quality
+29.8,59.1,5.2,17.9,18.9,9.2,1.72,6.3,319,Moderate
+...
+```
+
+**Note:** To use `air_quality.csv`, you'll need to modify the code to:
+1. Convert categorical labels to integers (e.g., Good=0, Moderate=1, Poor=2, Hazardous=3)
+2. Update the number of features to 9
+3. Adjust the train/test split for the larger dataset
 
 ## 🎓 Educational Focus
 
